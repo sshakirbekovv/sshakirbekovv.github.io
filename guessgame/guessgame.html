@@ -1,0 +1,147 @@
+<?php
+session_start();
+if (!isset($_SESSION['Count'])) {
+  $_SESSION['Count'] = 6;
+}
+ ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guessgame</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <meta charset="utf-8">
+  <style>
+  body{
+    background: black;
+  }
+  img{
+    height:160px;
+    width: 160px;
+  }
+ .ft{
+
+   position: relative;
+   left:510px;
+
+ }
+ .sc{
+   position: relative;
+   top:167px;
+   left:182px;
+
+ }
+ div{
+   position: relative;
+   background: white;
+   height:160px;
+   width: 390px;
+   top:165px;
+ }
+ hr{
+   position: relative;
+   top:85px;
+   color:black;
+   height: 5px;
+   background-color: black;
+ }
+#txt{
+  position: relative;
+  top:40px;
+  height:30px;
+  width: 120px;
+}
+input[type="button"]{
+  position: relative;
+  top:40px;
+}
+input[value="Guess"]{
+  font-size: 15px;
+
+}
+#time{
+  position: absolute;
+  color:black;
+  background: white;
+  font-size: 60px;
+  bottom: 200px;
+
+}
+.www{
+  position: relative;
+  width:50px;
+  height:60px;
+  top:20px;
+}
+  </style>
+</head>
+<body>
+  <img class="ft" src="http://north.viacom.com/wp-content/uploads/2013/03/3-H20-HR1-1024x680.jpg"  />
+  <img class="ft"src="https://hi-news.ru/wp-content/uploads/2018/02/ice.jpg"/>
+  <img class="sc" src="https://regnum.ru/uploads/pictures/news/2018/07/25/regnum_picture_1532481068362990_big.jpg"/>
+  <img class="sc" src="https://www.grekomania.ru/images/greek-articles/other/big/288_morya-grecii-4.jpg"/>
+  <center><div>
+    <form  method="post"  >
+        <input type="text"  id="w1" class="www" />
+          <input type="text"  id="w2" class="www" />
+            <input type="text"  id="w3" class="www" />
+              <input type="text"  id="w4" class="www"/>
+                    <input type="text"  id="w5" class="www"/>
+      <input type="text"  id="txt" /><input type="button" onclick="words();"  value="Guess"/>
+  </form>
+</div></center>
+
+<div id ="time">You have <span id="timer"></span> seconds</div>
+<script type="text/javascript">
+var t=30000;
+function time()
+{
+  if (t>0)
+  {
+    t--;
+   document.getElementById('timer').innerHTML=t;
+  } else{
+      alert("Time is over!");
+  }
+}
+var tm=setInterval('time();',1000);
+function words(){
+  if(document.getElementById('txt').value=='w'  ){
+      document.getElementById('w1').value = 'w';
+  }
+  if( document.getElementById('txt').value=='W' ){
+    document.getElementById('w1').value = "W";
+  }
+  if(document.getElementById('txt').value=='a'  ){
+      document.getElementById('w2').value = 'a';
+  }
+  if( document.getElementById('txt').value=='A' ){
+    document.getElementById('w2').value = "A";
+  }
+  if(document.getElementById('txt').value=='t'  ){
+      document.getElementById('w3').value = 't';
+  }
+  if( document.getElementById('txt').value=='T' ){
+    document.getElementById('w3').value = "T";
+  }
+  if(document.getElementById('txt').value=='e'  ){
+      document.getElementById('w4').value = 'e';
+  }
+  if( document.getElementById('txt').value=='E' ){
+    document.getElementById('w4').value = "E";
+  }
+  if(document.getElementById('txt').value=='r'  ){
+      document.getElementById('w5').value = 'r';
+  }
+  if( document.getElementById('txt').value=='R' ){
+    document.getElementById('w5').value = "R";
+  }
+  if(document.getElementById('txt').value !='w' && document.getElementById('txt').value !='a'  && document.getElementById('txt').value !='t' && document.getElementById('txt').value !='e'  && document.getElementById('txt').value !='r'){
+        alert("No words!");
+  }
+  if(document.getElementById('w1').value =='w' && document.getElementById('w2').value =='a'  && document.getElementById('w3').value =='t' && document.getElementById('w4').value =='e'  && document.getElementById('w5').value =='r' ){
+    alert("You win!");
+  }
+}
+</script>
+</body>
+</html>
